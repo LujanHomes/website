@@ -154,7 +154,12 @@
 
   /* ---------- COMODIDADES ---------- */
   .comodidades { background: var(--crema-2); }
-  .amen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 2.8rem; }
+  .amen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+  .amen-cat { margin-top: 2.6rem; }
+  .amen-cat + .amen-cat { margin-top: 3rem; }
+  .amen-cat-head { display: flex; align-items: center; gap: .7rem; padding-bottom: .85rem; margin-bottom: 1.6rem; border-bottom: 1.5px solid var(--linea); }
+  .amen-cat-head i { color: var(--naranja); font-size: 1.2rem; }
+  .amen-cat-head h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 3vw, 1.45rem); font-weight: 700; }
   .amen-card {
     background: var(--blanco); border-radius: var(--radio); padding: 1.8rem 1.6rem;
     border: 1px solid var(--linea); transition: transform .25s ease, box-shadow .25s ease;
@@ -164,7 +169,7 @@
     width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center;
     background: #fbe9d8; color: var(--naranja-osc); font-size: 1.3rem; margin-bottom: 1rem;
   }
-  .amen-card h3 { font-size: 1.15rem; margin-bottom: .35rem; }
+  .amen-card h4 { font-size: 1.15rem; margin-bottom: .35rem; }
   .amen-card p { font-size: .92rem; color: var(--tinta-suave); }
 
   /* ---------- UNIDADES ---------- */
@@ -351,23 +356,38 @@
     <span class="eyebrow">Comodidades y servicios</span>
     <h2 class="sec-titulo">Todo pensado para tu bienestar</h2>
     <p class="sec-intro">Disfrutá de una experiencia única con servicios diseñados para hacerte sentir como en casa.</p>
-    <div class="amen-grid">
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-person-swimming"></i></div><h3>Piscina climatizada</h3><p>Piscina descubierta con solarium y mirador. La climatización funciona en temporada, pero podés disfrutarla durante todo el año.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-wifi"></i></div><h3>WiFi de alta velocidad</h3><p>Conexión rápida en todo el complejo, ideal para trabajar o ver Netflix y TV por cable.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-square-parking"></i></div><h3>Cochera privada</h3><p>Plazas seguras para tu vehículo dentro de las instalaciones, para todos los departamentos.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-hot-tub-person"></i></div><h3>Jacuzzi todo el año</h3><p>Jacuzzi climatizado disponible durante todo el año para relajarte después de pasear. Avisá con una hora de anticipación para usarlo.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-fire-burner"></i></div><h3>Terraza con parrillas</h3><p>Terraza y solárium con parrillas para compartir un asado y disfrutar las áreas comunes al aire libre.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-dumbbell"></i></div><h3>Mini gimnasio</h3><p>Mini gimnasio equipado, de uso libre las 24 horas, para mantener tu rutina sin moverte del complejo.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-book-open-reader"></i></div><h3>Zona de lectura y cowork</h3><p>Un espacio tranquilo de lectura junto al SUM y la sala de coworking para trabajar o desconectar.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-mug-saucer"></i></div><h3>Desayuno libre buffet</h3><p>Desayuno libre buffet incluido para empezar el día, con opciones sin TACC (avisá con anticipación). Servicio de merienda y cena con costo adicional; armamos cenas para grupos de más de 10 personas.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-children"></i></div><h3>Kids Club</h3><p>Espacio de juegos pensado para los más chicos: ideal para una escapada en familia.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-wheelchair"></i></div><h3>Unidades accesibles</h3><p>Departamentos adaptados con rampa, ducha accesible y barandas de seguridad en planta baja y primer piso.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-bell-concierge"></i></div><h3>Recepción 24 hs</h3><p>Recepción y conserjería las 24 horas, con personal permanente, check-in/out express, guardaequipaje y atención personalizada.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-video"></i></div><h3>Seguridad 24 hs</h3><p>Cámaras de videovigilancia en áreas comunes y personal las 24 horas para que disfrutes con total tranquilidad.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-spa"></i></div><h3>Masajes</h3><p>Servicio de masajes para relajarte durante tu estadía, a solicitar en conserjería (con costo adicional).</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-soap"></i></div><h3>Lavandería</h3><p>Servicio de lavandería profesional para tu ropa personal, disponible con costo adicional.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-champagne-glasses"></i></div><h3>Salón de eventos</h3><p>Salón de eventos para tus celebraciones. Se alquila aparte, no está incluido en la estadía.</p></div>
-      <div class="amen-card reveal"><div class="ico"><i class="fa-solid fa-paw"></i></div><h3>Pet Friendly</h3><p>Somos Pet Friendly: consultá las condiciones para venir con tu mascota.</p></div>
+    <div class="amen-cat reveal">
+      <div class="amen-cat-head"><i class="fa-solid fa-spa"></i><h3>Bienestar y recreación</h3></div>
+      <div class="amen-grid">
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-person-swimming"></i></div><h4>Piscina climatizada</h4><p>Piscina descubierta con solarium y mirador. La climatización funciona en temporada, pero podés disfrutarla durante todo el año.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-hot-tub-person"></i></div><h4>Jacuzzi todo el año</h4><p>Jacuzzi climatizado disponible durante todo el año para relajarte después de pasear. Avisá con una hora de anticipación para usarlo.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-dumbbell"></i></div><h4>Mini gimnasio</h4><p>Mini gimnasio equipado, de uso libre las 24 horas, para mantener tu rutina sin moverte del complejo.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-fire-burner"></i></div><h4>Terraza con parrillas</h4><p>Terraza y solárium con parrillas para compartir un asado y disfrutar las áreas comunes al aire libre.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-spa"></i></div><h4>Masajes</h4><p>Servicio de masajes para relajarte durante tu estadía, a solicitar en conserjería (con costo adicional).</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-children"></i></div><h4>Kids Club</h4><p>Espacio de juegos pensado para los más chicos: ideal para una escapada en familia.</p></div>
+      </div>
+    </div>
+
+    <div class="amen-cat reveal">
+      <div class="amen-cat-head"><i class="fa-solid fa-bell-concierge"></i><h3>Servicios e instalaciones</h3></div>
+      <div class="amen-grid">
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-wifi"></i></div><h4>WiFi de alta velocidad</h4><p>Conexión rápida en todo el complejo, ideal para trabajar o ver Netflix y TV por cable.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-square-parking"></i></div><h4>Cochera privada</h4><p>Plazas seguras para tu vehículo dentro de las instalaciones, para todos los departamentos.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-mug-saucer"></i></div><h4>Desayuno libre buffet</h4><p>Desayuno libre buffet incluido para empezar el día, con opciones sin TACC (avisá con anticipación). Servicio de merienda y cena con costo adicional; armamos cenas para grupos de más de 10 personas.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-book-open-reader"></i></div><h4>Zona de lectura y cowork</h4><p>Un espacio tranquilo de lectura junto al SUM y la sala de coworking para trabajar o desconectar.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-soap"></i></div><h4>Lavandería</h4><p>Servicio de lavandería profesional para tu ropa personal, disponible con costo adicional.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-champagne-glasses"></i></div><h4>Salón de eventos</h4><p>Salón de eventos para tus celebraciones. Se alquila aparte, no está incluido en la estadía.</p></div>
+      </div>
+    </div>
+
+    <div class="amen-cat reveal">
+      <div class="amen-cat-head"><i class="fa-solid fa-shield-halved"></i><h3>Atención y seguridad</h3></div>
+      <div class="amen-grid">
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-bell-concierge"></i></div><h4>Recepción 24 hs</h4><p>Recepción y conserjería las 24 horas, con personal permanente, check-in/out express, guardaequipaje y atención personalizada.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-video"></i></div><h4>Seguridad 24 hs</h4><p>Cámaras de videovigilancia en áreas comunes y personal las 24 horas para que disfrutes con total tranquilidad.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-wheelchair"></i></div><h4>Unidades accesibles</h4><p>Departamentos adaptados con rampa, ducha accesible y barandas de seguridad en planta baja y primer piso.</p></div>
+        <div class="amen-card"><div class="ico"><i class="fa-solid fa-paw"></i></div><h4>Pet Friendly</h4><p>Somos Pet Friendly: consultá las condiciones para venir con tu mascota.</p></div>
+      </div>
     </div>
   </div>
 </section>
