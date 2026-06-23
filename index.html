@@ -97,8 +97,9 @@
     border-bottom: 1px solid var(--linea);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: .8rem 0; }
-  .nav-logo { display: flex; align-items: center; gap: .65rem; font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.25rem; }
-  .nav-logo img { height: 38px; width: auto; display: block; }
+  .nav-logo { display: flex; align-items: baseline; gap: .25rem; font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.45rem; letter-spacing: -.01em; color: var(--tinta); line-height: 1; }
+  .nav-logo span { color: var(--naranja); }
+  .nav-logo:hover span { color: var(--naranja-osc); }
   .nav-links { display: flex; align-items: center; gap: 2rem; }
   .nav-links a { font-size: .92rem; font-weight: 600; color: var(--tinta-suave); transition: color .2s; }
   .nav-links a:hover { color: var(--naranja); }
@@ -300,8 +301,8 @@
 <!-- ===== NAV ===== -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="#inicio" class="nav-logo">
-      <img src="img/logo.png" alt="Luján Homes" />
+    <a href="#inicio" class="nav-logo" aria-label="Luján Homes — inicio">
+      Luján<span>Homes</span>
     </a>
     <button class="nav-toggle" aria-label="Menú" id="navToggle"><i class="fa-solid fa-bars"></i></button>
     <nav class="nav-links" id="navLinks">
