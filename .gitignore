@@ -5,3 +5,10 @@ cambios.md
 confirmacion-cambios-lujan-homes.md
 mensaje-natalia.md
 testeo.md
+
+# Imágenes fuente pesadas (en el sitio se publican las .webp optimizadas)
+img/otras/
+img/background.png
+img/log.png
+img/logo-sinfondo.png
+img/galeria/*.png

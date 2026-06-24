@@ -10,11 +10,11 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Luján Homes — Departamentos en Luján" />
 <meta property="og:description" content="Tu casa en Luján, a pasos de la Basílica. Piscina, cochera, WiFi de alta velocidad y amenities premium. Descansar · Disfrutar · Vivir." />
-<meta property="og:image" content="img/home.jpg" />
+<meta property="og:image" content="img/background.webp" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Luján Homes — Departamentos en Luján" />
 <meta name="twitter:description" content="Tu casa en Luján, a pasos de la Basílica. Piscina, cochera, WiFi y amenities premium." />
-<meta name="twitter:image" content="img/home.jpg" />
+<meta name="twitter:image" content="img/background.webp" />
 
 <link rel="icon" type="image/png" href="img/logo.png" />
 
@@ -123,7 +123,7 @@
   .hero::before {
     content: ""; position: absolute; inset: 0;
     background: linear-gradient(180deg, rgba(42,38,34,.35) 0%, rgba(42,38,34,.55) 60%, rgba(42,38,34,.75) 100%),
-                url('img/home.jpg') center/cover no-repeat;
+                url('img/background.webp') center/cover no-repeat;
     transform: scale(1.02);
   }
   .hero-content { position: relative; z-index: 2; padding: 6rem 0; }
@@ -191,21 +191,84 @@
   .unidad-body p { font-size: .93rem; color: var(--tinta-suave); margin-bottom: 1.4rem; flex: 1; }
   .unidad-body .btn { align-self: flex-start; }
 
-  /* ---------- GALERÍA ---------- */
+  /* ---------- GALERÍA (masonry + lightbox) ---------- */
   .galeria { background: var(--crema-2); }
-  .gal-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 1rem; margin-top: 2.8rem; }
-  .gal-grid figure { overflow: hidden; border-radius: 12px; margin: 0; }
-  .gal-grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
-  .gal-grid figure:hover img { transform: scale(1.07); }
-  .gal-grid .tall { grid-row: span 2; }
-  .gal-grid .wide { grid-column: span 2; }
-  @media (max-width: 760px) { .gal-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; } .gal-grid .wide { grid-column: span 2; } }
+  .gal-masonry { columns: 4 240px; column-gap: 1rem; margin-top: 2.8rem; }
+  .gal-masonry figure {
+    position: relative; margin: 0 0 1rem; break-inside: avoid;
+    border-radius: 14px; overflow: hidden; cursor: zoom-in;
+    box-shadow: 0 8px 24px rgba(42, 38, 34, .10);
+  }
+  .gal-masonry img { width: 100%; display: block; transition: transform .55s ease; }
+  .gal-masonry figure::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(42,38,34,0) 55%, rgba(42,38,34,.45) 100%);
+    opacity: 0; transition: opacity .3s ease;
+  }
+  .gal-masonry figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+    padding: 1rem 1.1rem; color: #fff; font-size: .9rem; font-weight: 600;
+    display: flex; align-items: center; gap: .5rem;
+    opacity: 0; transform: translateY(8px); transition: opacity .3s ease, transform .3s ease;
+  }
+  .gal-masonry figcaption i { color: #ffb877; }
+  .gal-masonry figure:hover img { transform: scale(1.06); }
+  .gal-masonry figure:hover::after,
+  .gal-masonry figure:hover figcaption { opacity: 1; transform: none; }
+  @media (max-width: 760px) { .gal-masonry { columns: 2 150px; column-gap: .7rem; } .gal-masonry figure { margin-bottom: .7rem; } }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+    background: rgba(26, 23, 20, .92); backdrop-filter: blur(6px);
+    opacity: 0; pointer-events: none; transition: opacity .25s ease; padding: 4vw;
+  }
+  .lightbox.open { opacity: 1; pointer-events: auto; }
+  .lb-figure { margin: 0; max-width: min(1100px, 92vw); max-height: 86vh; display: flex; flex-direction: column; align-items: center; }
+  .lb-img {
+    max-width: 100%; max-height: 78vh; border-radius: 12px; display: block;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+    transform: scale(.96); transition: transform .25s ease;
+  }
+  .lightbox.open .lb-img { transform: scale(1); }
+  .lb-caption { color: #e8e0d4; font-size: .92rem; margin-top: .9rem; text-align: center; }
+  .lb-count { color: #ffb877; font-weight: 700; }
+  .lb-btn {
+    position: absolute; background: rgba(255,255,255,.12); color: #fff; border: none;
+    width: 52px; height: 52px; border-radius: 50%; cursor: pointer; font-size: 1.5rem;
+    display: grid; place-items: center; transition: background .2s, transform .2s;
+  }
+  .lb-btn:hover { background: var(--naranja); transform: scale(1.06); }
+  .lb-close { top: 4vw; right: 4vw; font-size: 1.4rem; }
+  .lb-prev { left: 3vw; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 3vw; top: 50%; transform: translateY(-50%); }
+  .lb-prev:hover, .lb-next:hover { transform: translateY(-50%) scale(1.06); }
+  @media (max-width: 620px) {
+    .lb-prev { left: 50%; top: auto; bottom: 4vw; transform: translateX(-130%); }
+    .lb-next { right: 50%; top: auto; bottom: 4vw; transform: translateX(130%); }
+    .lb-prev:hover, .lb-next:hover { transform: translateX(-130%) scale(1.06); }
+    .lb-next:hover { transform: translateX(130%) scale(1.06); }
+  }
 
   /* ---------- ZONA ---------- */
-  .zona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.8rem; }
-  .zona-card { display: flex; gap: 1rem; align-items: flex-start; }
-  .zona-card .ico { color: var(--naranja); font-size: 1.5rem; margin-top: .2rem; flex-shrink: 0; }
-  .zona-card h3 { font-size: 1.15rem; margin-bottom: .25rem; }
+  .zona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.6rem; margin-top: 2.8rem; }
+  .zona-card {
+    background: var(--blanco); border-radius: var(--radio); overflow: hidden;
+    border: 1px solid var(--linea); box-shadow: var(--sombra);
+    display: flex; flex-direction: column; transition: transform .25s ease;
+  }
+  .zona-card:hover { transform: translateY(-6px); }
+  .zona-foto { position: relative; }
+  .zona-foto .zf-img { display: block; height: 200px; overflow: hidden; border-radius: var(--radio) var(--radio) 0 0; }
+  .zona-foto img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .55s ease; }
+  .zona-card:hover .zona-foto img { transform: scale(1.07); }
+  .zona-card .ico {
+    position: absolute; bottom: -22px; left: 1.3rem; margin: 0;
+    width: 48px; height: 48px; border-radius: 12px; background: var(--naranja);
+    color: #fff; display: grid; place-items: center; font-size: 1.2rem; box-shadow: var(--sombra);
+  }
+  .zona-body { padding: 2rem 1.4rem 1.6rem; }
+  .zona-card h3 { font-size: 1.2rem; margin-bottom: .3rem; }
   .zona-card p { font-size: .92rem; color: var(--tinta-suave); }
 
   /* ---------- RESERVA ---------- */
@@ -337,7 +400,7 @@
 <section id="complejo">
   <div class="wrap presenta">
     <div class="presenta-img reveal">
-      <img src="img/pileta.jpg" alt="Piscina climatizada del complejo Luján Homes" />
+      <img src="img/galeria/pileta.webp" alt="Piscina climatizada del complejo Luján Homes" />
       <div class="badge">Piscina climatizada<span>Descubierta + solarium</span></div>
     </div>
     <div class="reveal">
@@ -401,7 +464,7 @@
     <div class="unidades-grid">
 
       <article class="unidad reveal">
-        <img src="img/living.jpg" alt="Studio Deluxe monoambiente y luminoso" />
+        <img src="img/deptos/deluxe/IMG_9223.webp" alt="Studio Deluxe monoambiente y luminoso" />
         <div class="unidad-body">
           <h3>Studio Deluxe</h3>
           <div class="unidad-meta">
@@ -415,7 +478,7 @@
       </article>
 
       <article class="unidad reveal">
-        <img src="img/dormitorio-toallas.jpg" alt="Suite Familiar Loft amplia con cama king" />
+        <img src="img/deptos/loft/IMG_9221.webp" alt="Suite Familiar Loft amplia con cama king" />
         <div class="unidad-body">
           <h3>Suite Familiar · Loft</h3>
           <div class="unidad-meta">
@@ -429,7 +492,7 @@
       </article>
 
       <article class="unidad reveal">
-        <img src="img/dormitorio-amplio.jpg" alt="Suite Familiar Family de dos ambientes" />
+        <img src="img/deptos/family/IMG_9212.webp" alt="Suite Familiar Family de dos ambientes" />
         <div class="unidad-body">
           <h3>Suite Familiar · Family</h3>
           <div class="unidad-meta">
@@ -451,17 +514,34 @@
   <div class="wrap">
     <span class="eyebrow">Fototeca</span>
     <h2 class="sec-titulo">Conocé Luján Homes por dentro</h2>
-    <div class="gal-grid">
-      <figure class="tall reveal"><img src="img/dormitorio-amplio.jpg" alt="Dormitorio amplio con cama matrimonial" /></figure>
-      <figure class="wide reveal"><img src="img/cocina.jpg" alt="Cocina integrada y equipada" /></figure>
-      <figure class="reveal"><img src="img/bano.jpg" alt="Baño completo del departamento" /></figure>
-      <figure class="reveal"><img src="img/dormitorio.jpg" alt="Dormitorio con piso de madera" /></figure>
-      <figure class="wide reveal"><img src="img/pileta.jpg" alt="Piscina del complejo" /></figure>
-      <figure class="reveal"><img src="img/cochera.jpg" alt="Cochera privada dentro del complejo" /></figure>
-      <figure class="reveal"><img src="img/bano-2.jpg" alt="Baño con bañera" /></figure>
+    <div class="gal-masonry" id="galMasonry">
+      <figure class="reveal"><img src="img/galeria/salon.webp" alt="Salón común de Luján Homes" loading="lazy" /><figcaption><i class="fa-solid fa-couch"></i> Salón común</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/cocina.webp" alt="Cocina integrada y equipada" loading="lazy" /><figcaption><i class="fa-solid fa-kitchen-set"></i> Cocina equipada</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/pileta2.webp" alt="Piscina climatizada del complejo" loading="lazy" /><figcaption><i class="fa-solid fa-person-swimming"></i> Piscina climatizada</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/lectura.webp" alt="Zona de lectura y coworking" loading="lazy" /><figcaption><i class="fa-solid fa-book-open-reader"></i> Lectura y cowork</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/desayuno2.webp" alt="Desayuno libre buffet" loading="lazy" /><figcaption><i class="fa-solid fa-mug-saucer"></i> Desayuno buffet</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/banio.webp" alt="Baño completo del departamento" loading="lazy" /><figcaption><i class="fa-solid fa-bath"></i> Baño completo</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/salon2.webp" alt="Salón de usos comunes" loading="lazy" /><figcaption><i class="fa-solid fa-champagne-glasses"></i> Usos comunes</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/desayuno.webp" alt="Mesa de desayuno servida" loading="lazy" /><figcaption><i class="fa-solid fa-utensils"></i> Mesa servida</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/metegol.webp" alt="Espacio de juegos y recreación" loading="lazy" /><figcaption><i class="fa-solid fa-table-tennis-paddle-ball"></i> Recreación</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/frutas.webp" alt="Frutas frescas del desayuno buffet" loading="lazy" /><figcaption><i class="fa-solid fa-apple-whole"></i> Frutas frescas</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/banio2.webp" alt="Baño con bañera" loading="lazy" /><figcaption><i class="fa-solid fa-hot-tub-person"></i> Baño con bañera</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/desayuno3.webp" alt="Desayuno buffet de Luján Homes" loading="lazy" /><figcaption><i class="fa-solid fa-bell-concierge"></i> Buffet completo</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/perro.webp" alt="Complejo Pet Friendly: bienvenidas las mascotas" loading="lazy" /><figcaption><i class="fa-solid fa-paw"></i> Pet Friendly</figcaption></figure>
     </div>
   </div>
 </section>
+
+<!-- Lightbox de la galería -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Galería de imágenes ampliada">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+  <figure class="lb-figure">
+    <img class="lb-img" id="lbImg" src="" alt="" />
+    <figcaption class="lb-caption"><span class="lb-count" id="lbCount"></span> · <span id="lbText"></span></figcaption>
+  </figure>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
 
 <!-- ===== ZONA ===== -->
 <section id="zona">
@@ -470,9 +550,18 @@
     <h2 class="sec-titulo">En el corazón de Luján</h2>
     <p class="sec-intro">A pocas cuadras de los puntos más emblemáticos de la ciudad. Salís de tu departamento y ya estás paseando.</p>
     <div class="zona-grid">
-      <div class="zona-card reveal"><div class="ico"><i class="fa-solid fa-church"></i></div><div><h3>Basílica de Luján</h3><p>La imponente Basílica Nuestra Señora de Luján, a pasos del complejo. Vista privilegiada desde varias unidades.</p></div></div>
-      <div class="zona-card reveal"><div class="ico"><i class="fa-solid fa-landmark"></i></div><div><h3>Complejo Museográfico Udaondo</h3><p>El Complejo Museográfico provincial Enrique Udaondo, uno de los más completos del país, muy cerca tuyo.</p></div></div>
-      <div class="zona-card reveal"><div class="ico"><i class="fa-solid fa-utensils"></i></div><div><h3>Gastronomía y paseos</h3><p>Un gran centro comercial con una extensa oferta de cervecerías, bares y restaurantes a la vuelta.</p></div></div>
+      <div class="zona-card reveal">
+        <div class="zona-foto"><span class="zf-img"><img src="img/atracciones/basilica.webp" alt="Basílica Nuestra Señora de Luján" loading="lazy" /></span><div class="ico"><i class="fa-solid fa-church"></i></div></div>
+        <div class="zona-body"><h3>Basílica de Luján</h3><p>La imponente Basílica Nuestra Señora de Luján, a pasos del complejo. Vista privilegiada desde varias unidades.</p></div>
+      </div>
+      <div class="zona-card reveal">
+        <div class="zona-foto"><span class="zf-img"><img src="img/atracciones/museo.webp" alt="Complejo Museográfico Enrique Udaondo" loading="lazy" /></span><div class="ico"><i class="fa-solid fa-landmark"></i></div></div>
+        <div class="zona-body"><h3>Complejo Museográfico Udaondo</h3><p>El Complejo Museográfico provincial Enrique Udaondo, uno de los más completos del país, muy cerca tuyo.</p></div>
+      </div>
+      <div class="zona-card reveal">
+        <div class="zona-foto"><span class="zf-img"><img src="img/atracciones/lujan.webp" alt="Vista aérea de la ciudad de Luján" loading="lazy" /></span><div class="ico"><i class="fa-solid fa-utensils"></i></div></div>
+        <div class="zona-body"><h3>Gastronomía y paseos</h3><p>Un gran centro comercial con una extensa oferta de cervecerías, bares y restaurantes a la vuelta.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -548,7 +637,7 @@
   <div class="wrap">
     <div class="pie-top">
       <div>
-        <div class="pie-logo"><img src="img/logo.png" alt="Luján Homes" /></div>
+        <div class="pie-logo"><img src="img/logo-sinfondo.webp" alt="Luján Homes" /></div>
         <p style="margin-top:.8rem; max-width:30ch; font-size:.9rem;">Departamentos de alquiler temporario en el corazón de Luján. Descansar · Disfrutar · Vivir.</p>
         <div class="pie-redes">
           <a href="https://wa.me/5491163603926" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -732,6 +821,41 @@
     if (e.key === 'Escape') document.querySelectorAll('.dp.open').forEach(o => {
       o.classList.remove('open'); o.querySelector('.dp-trigger').setAttribute('aria-expanded', 'false'); o.querySelector('.dp-pop').hidden = true;
     });
+  });
+
+  // ===== Lightbox de la galería =====
+  const galFigs = Array.from(document.querySelectorAll('#galMasonry figure'));
+  const galItems = galFigs.map(f => {
+    const img = f.querySelector('img');
+    const cap = f.querySelector('figcaption');
+    return { src: img.getAttribute('src'), alt: img.getAttribute('alt'), text: cap ? cap.textContent.trim() : img.getAttribute('alt') };
+  });
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbText = document.getElementById('lbText');
+  const lbCount = document.getElementById('lbCount');
+  let lbIndex = 0;
+
+  function lbShow(i) {
+    lbIndex = (i + galItems.length) % galItems.length;
+    const it = galItems[lbIndex];
+    lbImg.src = it.src; lbImg.alt = it.alt;
+    lbText.textContent = it.text;
+    lbCount.textContent = (lbIndex + 1) + ' / ' + galItems.length;
+  }
+  function lbOpen(i) { lbShow(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+  function lbClose() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+
+  galFigs.forEach((f, i) => f.addEventListener('click', () => lbOpen(i)));
+  document.getElementById('lbClose').addEventListener('click', lbClose);
+  document.getElementById('lbPrev').addEventListener('click', () => lbShow(lbIndex - 1));
+  document.getElementById('lbNext').addEventListener('click', () => lbShow(lbIndex + 1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) lbClose(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lbClose();
+    else if (e.key === 'ArrowLeft') lbShow(lbIndex - 1);
+    else if (e.key === 'ArrowRight') lbShow(lbIndex + 1);
   });
 </script>
 
