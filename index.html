@@ -179,25 +179,20 @@
   .amen-cat-head { display: flex; align-items: center; gap: .7rem; padding-bottom: .85rem; margin-bottom: 1.6rem; border-bottom: 1.5px solid var(--linea); }
   .amen-cat-head i { color: var(--naranja); font-size: 1.2rem; }
   .amen-cat-head h3 { font-family: 'Fraunces', serif; font-size: clamp(1.2rem, 3vw, 1.45rem); font-weight: 700; }
+  /* Icono junto al titulo, descripcion debajo de ambos */
   .amen-card {
     background: var(--blanco); border-radius: var(--radio); padding: 1.8rem 1.6rem;
     border: 1px solid var(--linea); transition: transform .25s ease, box-shadow .25s ease;
+    display: grid; grid-template-columns: auto 1fr; column-gap: .9rem; row-gap: .6rem; align-items: center;
   }
   .amen-card:hover { transform: translateY(-5px); box-shadow: var(--sombra); }
   .amen-card .ico {
     width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center;
-    background: #fbe9d8; color: var(--naranja-osc); font-size: 1.3rem; margin-bottom: 1rem;
+    background: #fbe9d8; color: var(--naranja-osc); font-size: 1.3rem;
+    grid-column: 1; grid-row: 1;
   }
-  .amen-card h4 { font-size: 1.15rem; margin-bottom: .35rem; }
-  .amen-card p { font-size: .92rem; color: var(--tinta-suave); }
-
-  /* En celular: icono junto al titulo, descripcion debajo */
-  @media (max-width: 600px) {
-    .amen-card { display: grid; grid-template-columns: auto 1fr; column-gap: .9rem; row-gap: .6rem; align-items: center; }
-    .amen-card .ico { grid-column: 1; grid-row: 1; margin-bottom: 0; }
-    .amen-card h4 { grid-column: 2; grid-row: 1; margin-bottom: 0; }
-    .amen-card p { grid-column: 1 / -1; grid-row: 2; }
-  }
+  .amen-card h4 { font-size: 1.15rem; grid-column: 2; grid-row: 1; }
+  .amen-card p { font-size: .92rem; color: var(--tinta-suave); grid-column: 1 / -1; grid-row: 2; }
 
   /* ---------- UNIDADES ---------- */
   .unidades-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.8rem; margin-top: 2.8rem; }
