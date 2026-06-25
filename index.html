@@ -117,8 +117,10 @@
 
   /* ---------- HERO ---------- */
   .hero {
-    position: relative; min-height: 88vh; display: flex; align-items: center;
+    position: relative; display: flex; align-items: center;
     color: #fff; padding: 0; overflow: hidden;
+    min-height: 88vh;                       /* fallback navegadores sin svh */
+    min-height: calc(100svh - 4.5rem);      /* alto visible real menos el header */
   }
   .hero::before {
     content: ""; position: absolute; inset: 0;
@@ -126,7 +128,7 @@
                 url('img/background.webp') center/cover no-repeat;
     transform: scale(1.02);
   }
-  .hero-content { position: relative; z-index: 2; padding: 6rem 0; }
+  .hero-content { position: relative; z-index: 2; padding: clamp(2rem, 8vh, 6rem) 0; }
   .hero h1 { font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 600; max-width: 16ch; }
   .hero .tagline {
     text-transform: uppercase; letter-spacing: .3em; font-size: .8rem; font-weight: 700;
