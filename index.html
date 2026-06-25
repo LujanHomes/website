@@ -38,6 +38,7 @@
     --blanco: #ffffff;
     --sombra: 0 18px 50px rgba(42, 38, 34, .12);
     --radio: 16px;
+    --nav-h: 4rem;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -96,7 +97,7 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--linea);
   }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: .8rem 0; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: var(--nav-h); }
   .nav-logo { display: flex; align-items: baseline; gap: .25rem; font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.45rem; letter-spacing: -.01em; color: var(--tinta); line-height: 1; }
   .nav-logo span { color: var(--naranja); }
   .nav-logo:hover span { color: var(--naranja-osc); }
@@ -118,9 +119,10 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative; display: flex; align-items: center;
-    color: #fff; padding: 0; overflow: hidden;
-    min-height: 88vh;                       /* fallback navegadores sin svh */
-    min-height: calc(100svh - 4.5rem);      /* alto visible real menos el header */
+    color: #fff; padding: var(--nav-h) 0 0; overflow: hidden;
+    margin-top: calc(-1 * var(--nav-h));    /* el hero arranca detras del header */
+    min-height: 100vh;                      /* fallback navegadores sin svh */
+    min-height: 100svh;                     /* 100% del alto visible real */
   }
   .hero::before {
     content: ""; position: absolute; inset: 0;
