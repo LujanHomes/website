@@ -191,12 +191,12 @@
   .amen-card h4 { font-size: 1.15rem; margin-bottom: .35rem; }
   .amen-card p { font-size: .92rem; color: var(--tinta-suave); }
 
-  /* En celular: icono a la izquierda del texto */
+  /* En celular: icono junto al titulo, descripcion debajo */
   @media (max-width: 600px) {
-    .amen-card { display: grid; grid-template-columns: auto 1fr; column-gap: 1rem; align-items: center; }
-    .amen-card .ico { grid-column: 1; grid-row: 1 / span 2; align-self: center; margin-bottom: 0; }
-    .amen-card h4 { grid-column: 2; grid-row: 1; }
-    .amen-card p { grid-column: 2; grid-row: 2; }
+    .amen-card { display: grid; grid-template-columns: auto 1fr; column-gap: .9rem; row-gap: .6rem; align-items: center; }
+    .amen-card .ico { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+    .amen-card h4 { grid-column: 2; grid-row: 1; margin-bottom: 0; }
+    .amen-card p { grid-column: 1 / -1; grid-row: 2; }
   }
 
   /* ---------- UNIDADES ---------- */
