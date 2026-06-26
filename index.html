@@ -155,6 +155,10 @@
   .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
   .hero-cta .btn-ghost { color: #fff; border-color: rgba(255,255,255,.5); }
   .hero-cta .btn-ghost:hover { background: rgba(255,255,255,.12); color: #fff; }
+  .hero-cta .btn-ig:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-color: transparent; color: #fff;
+  }
 
   /* ---------- PRESENTACIÓN ---------- */
   .presenta { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
@@ -313,6 +317,16 @@
   .zona-card h3 { font-size: 1.2rem; margin-bottom: .3rem; }
   .zona-card p { font-size: .92rem; color: var(--tinta-suave); }
 
+  /* ---------- MAPA ---------- */
+  .mapa { background: var(--crema-2); }
+  .mapa-frame {
+    margin-top: 2.8rem; border-radius: var(--radio); overflow: hidden;
+    border: 6px solid #fff; box-shadow: var(--sombra);
+    aspect-ratio: 16 / 9; background: var(--crema);
+  }
+  .mapa-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  @media (max-width: 640px) { .mapa-frame { aspect-ratio: 4 / 3; } }
+
   /* ---------- RESERVA ---------- */
   .reserva { background: var(--tinta); color: var(--crema); }
   .reserva .eyebrow { color: #ffb877; }
@@ -433,6 +447,7 @@
     <div class="hero-cta">
       <a href="#reserva" class="btn"><i class="fa-solid fa-calendar-check"></i> Reservar ahora</a>
       <a href="#unidades" class="btn btn-ghost">Ver departamentos</a>
+      <a href="https://instagram.com/LujanHomes" target="_blank" rel="noopener" class="btn btn-ghost btn-ig" aria-label="Seguinos en Instagram"><i class="fa-brands fa-instagram"></i> @LujanHomes</a>
     </div>
   </div>
 </section>
@@ -556,6 +571,8 @@
     <span class="eyebrow">Fototeca</span>
     <h2 class="sec-titulo">Conocé Luján Homes por dentro</h2>
     <div class="gal-masonry" id="galMasonry">
+      <figure class="reveal"><img src="img/galeria/pileta3.webp" alt="Piscina climatizada del complejo Luján Homes" loading="lazy" /><figcaption><i class="fa-solid fa-water-ladder"></i> Piscina del complejo</figcaption></figure>
+      <figure class="reveal"><img src="img/galeria/mariposa.webp" alt="Jardín del complejo con mariposas" loading="lazy" /><figcaption><i class="fa-solid fa-leaf"></i> Jardín y entorno</figcaption></figure>
       <figure class="reveal"><img src="img/galeria/salon.webp" alt="Salón común de Luján Homes" loading="lazy" /><figcaption><i class="fa-solid fa-couch"></i> Salón común</figcaption></figure>
       <figure class="reveal"><img src="img/galeria/cocina.webp" alt="Cocina integrada y equipada" loading="lazy" /><figcaption><i class="fa-solid fa-kitchen-set"></i> Cocina equipada</figcaption></figure>
       <figure class="reveal"><img src="img/galeria/pileta2.webp" alt="Piscina climatizada del complejo" loading="lazy" /><figcaption><i class="fa-solid fa-person-swimming"></i> Piscina climatizada</figcaption></figure>
@@ -569,8 +586,6 @@
       <figure class="reveal"><img src="img/galeria/banio2.webp" alt="Baño con bañera" loading="lazy" /><figcaption><i class="fa-solid fa-hot-tub-person"></i> Baño con bañera</figcaption></figure>
       <figure class="reveal"><img src="img/galeria/desayuno3.webp" alt="Desayuno buffet de Luján Homes" loading="lazy" /><figcaption><i class="fa-solid fa-bell-concierge"></i> Buffet completo</figcaption></figure>
       <figure class="reveal"><img src="img/galeria/perro.webp" alt="Complejo Pet Friendly: bienvenidas las mascotas" loading="lazy" /><figcaption><i class="fa-solid fa-paw"></i> Pet Friendly</figcaption></figure>
-      <figure class="reveal"><img src="img/galeria/pileta3.webp" alt="Piscina climatizada del complejo Luján Homes" loading="lazy" /><figcaption><i class="fa-solid fa-water-ladder"></i> Piscina del complejo</figcaption></figure>
-      <figure class="reveal"><img src="img/galeria/mariposa.webp" alt="Jardín del complejo con mariposas" loading="lazy" /><figcaption><i class="fa-solid fa-leaf"></i> Jardín y entorno</figcaption></figure>
     </div>
   </div>
 </section>
@@ -623,6 +638,18 @@
         <div class="zona-foto"><span class="zf-img"><img src="img/atracciones/lujan.webp" alt="Vista aérea de la ciudad de Luján" loading="lazy" /></span><div class="ico"><i class="fa-solid fa-utensils"></i></div></div>
         <div class="zona-body"><h3>Gastronomía y paseos</h3><p>Un gran centro comercial con una extensa oferta de cervecerías, bares y restaurantes a la vuelta.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAPA ===== -->
+<section class="mapa" id="ubicacion">
+  <div class="wrap">
+    <span class="eyebrow">Cómo llegar</span>
+    <h2 class="sec-titulo">Nuestra ubicación</h2>
+    <p class="sec-intro">Almirante Brown 130, Luján, Buenos Aires. A pasos de la Basílica y del centro de la ciudad.</p>
+    <div class="mapa-frame reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.716241287641!2d-59.118785499999994!3d-34.560739299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc7d48783e889b%3A0x16d9032bb37b379b!2sLuj%C3%A1n%20Homes%20-%20Apart%20Hotel!5e0!3m2!1sen!2sar!4v1782492513847!5m2!1sen!2sar" title="Ubicación de Luján Homes en el mapa" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
   </div>
 </section>
@@ -713,6 +740,7 @@
         <a href="#unidades">Departamentos</a>
         <a href="#comodidades">Comodidades</a>
         <a href="#zona">La zona</a>
+        <a href="#ubicacion">Ubicación</a>
         <a href="#reserva">Reservar</a>
       </div>
       <div class="pie-col">
