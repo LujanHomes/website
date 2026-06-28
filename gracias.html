@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>¡Gracias! — Luján Homes</title>
+<link rel="icon" type="image/png" href="img/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  :root {
+    --naranja: #e07a28;
+    --naranja-osc: #c2641a;
+    --crema: #f5f1e8;
+    --tinta: #2a2622;
+    --tinta-suave: #5b544c;
+    --blanco: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: var(--crema);
+    color: var(--tinta);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .card {
+    background: var(--blanco);
+    border-radius: 22px;
+    padding: 3rem 2.2rem;
+    max-width: 540px;
+    width: 100%;
+    box-shadow: 0 24px 60px rgba(42, 38, 34, .12);
+  }
+  .check {
+    width: 76px; height: 76px;
+    margin: 0 auto 1.6rem;
+    border-radius: 50%;
+    background: var(--naranja);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.1rem;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 5vw, 2.3rem);
+    line-height: 1.15;
+    margin-bottom: .9rem;
+  }
+  p { color: var(--tinta-suave); font-size: 1.02rem; line-height: 1.6; margin-bottom: .6rem; }
+  .btns { margin-top: 1.8rem; display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .85rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 600; font-size: .95rem;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primario { background: var(--naranja); color: #fff; }
+  .btn-primario:hover { background: var(--naranja-osc); transform: translateY(-2px); }
+  .btn-secundario { background: transparent; color: var(--tinta); border: 1.5px solid var(--linea, #e0d8c8); }
+  .btn-secundario:hover { transform: translateY(-2px); }
+  footer { margin-top: 2rem; font-size: .85rem; color: var(--tinta-suave); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="check"><i class="fa-solid fa-check"></i></div>
+    <h1>¡Gracias por tu consulta!</h1>
+    <p>Abrimos WhatsApp para que termines de enviarnos tu mensaje. Si no se abrió, escribinos directamente y te respondemos a la brevedad.</p>
+    <div class="btns">
+      <a class="btn btn-primario" href="https://wa.me/5491163603926" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Abrir WhatsApp</a>
+      <a class="btn btn-secundario" href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver al sitio</a>
+    </div>
+  </div>
+  <footer>© <span id="anio"></span> Luján Homes</footer>
+  <script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "c36dd4d9f84640be8ca6e598d73ee087"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
